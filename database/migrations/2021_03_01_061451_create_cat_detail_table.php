@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubTable extends Migration
+class CreateCatDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateSubTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub', function (Blueprint $table) {
+        Schema::create('cat_detail', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->unsignedInteger('pro_id');
+            $table->integer('cat_id');
             $table->timestamps();
+            $table->foreign('pro_id')->references('Sn')->on('product')->onDelete('cascade');
         });
     }
 
@@ -27,6 +29,6 @@ class CreateSubTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub');
+        Schema::dropIfExists('cat_detail');
     }
 }
