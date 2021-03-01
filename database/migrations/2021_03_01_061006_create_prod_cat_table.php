@@ -14,7 +14,7 @@ class CreateProdCatTable extends Migration
     public function up()
     {
         Schema::create('prod_cat', function (Blueprint $table) {
-            $table->increments('cat_id');
+            $table->id();
             $table->string('cat_name');
             $table->timestamps();
         });

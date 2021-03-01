@@ -15,10 +15,10 @@ class CreateCatDetailTable extends Migration
     {
         Schema::create('cat_detail', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('pro_id');
+            $table->unsignedBigInteger('pro_id');
             $table->integer('cat_id');
             $table->timestamps();
-            $table->foreign('pro_id')->references('Sn')->on('product')->onDelete('cascade');
+            $table->foreign('pro_id')->references('id')->on('product')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

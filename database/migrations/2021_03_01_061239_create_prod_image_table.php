@@ -14,12 +14,12 @@ class CreateProdImageTable extends Migration
     public function up()
     {
         Schema::create('prod_image', function (Blueprint $table) {
-            $table->increments('sn');
-            $table->unsignedInteger('p_id');
+            $table->id();
+            $table->unsignedBigInteger('p_id');
             $table->string('p_image');
             $table->timestamps();
 
-            $table->foreign('p_id')->references('Sn')->on('product')->onDelete('cascade');
+            $table->foreign('p_id')->references('id')->on('product')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
