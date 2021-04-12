@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatDetailTable extends Migration
+class CreateProductsTabel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCatDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_detail', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pro_id');
-            $table->integer('cat_id');
+            $table->string('p_name');
+            $table->text('p_des');
+            $table->decimal('p_price');
             $table->timestamps();
-            $table->foreign('pro_id')->references('id')->on('product')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCatDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_detail');
+        Schema::dropIfExists('products');
     }
 }
